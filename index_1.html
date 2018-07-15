@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="style_1.css" type="text/css">
+	<meta charset="UTF-8">
+	<title>Stopwatch</title>
+</head>
+<body>
+	<form name="myForm">
+		<input type="button" value="Обнулить" onclick="refresh()">
+		<input type="text" size="2" id="min" value="0"> :
+		<input type="text" size="2" id="sec" value="0">
+		<input type="button" value="Старт/Пауза" onclick="funPause()">
+	</form>
+		
+	<script type="text/javascript">
+		var min = 0, sec = 0;
+		var pause = 0;
+		function stopwatch() {
+			if(pause % 2 == 1) {
+				if(sec == 59) {
+					sec = 0;
+					min++;
+					document.getElementById("min").value = "0" + min;
+				}
+				else if(sec == 59 && min == 59) {
+					min = 0;
+					sec = 0;
+				}
+				else {
+					sec++;
+				}
+
+				if(sec <= 9) {
+					sec = "0" + sec;
+					document.getElementById("sec").value = sec;	
+				}
+				if(min != document.getElementById("min").value) {
+					document.getElementById("min").value = min;
+				} else if("0" + min != document.getElementById("min").value) {
+					document.getElementById("min").value = "0" + min;
+				}
+				document.getElementById("sec").value = sec;
+			}
+			else
+			{	
+				return console.log("0");
+			}
+		};
+			setInterval("stopwatch()", 1000);
+
+		function funPause() {
+			pause++;
+		};
+
+		function refresh() {
+			if(pause == 1){
+				pause++;
+			}
+			min = 0;
+			sec = 0;
+			document.getElementById("min").value = "00";
+			document.getElementById("sec").value = "00";
+		};
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+body {
+	font-size: 20px;
+}
+input[type="text"] {
+	width: 22px;
+	font-size: 20px;
+	outline: none;
+	border: none;
+	text-align: right;
+}
